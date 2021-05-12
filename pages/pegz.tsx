@@ -10,6 +10,7 @@ export const PegzPage: React.FC<{}> = () => {
                         <tr>
                             <td>
                                 <div className={styles.nftItem}>
+                                    TEST
                                     <iframe src="./PEGZ_files/ksk65m.html" width="100%" height="100%" allow="autoplay" className={styles.nftIframe} />
                                 </div>
                                 <div className={styles.centerItem}>
@@ -97,7 +98,7 @@ export const PegzPage: React.FC<{}> = () => {
                         <div className="divsocial"> <a href="https://www.instagram.com/pegzpegzpegz/"> <img id="imgsocial" src="./PEGZ_files/mig.png" /></a></div>
                         <div className="divsocial"> <a href="https://discord.com/invite/aXQqKxKggh"> <img id="imgsocial" src="./PEGZ_files/mdiscord.png" /></a></div>
                     </div>
-                    <h2 className={styles.socialTextContent}> @ 2021 PEGZ | <a href="https://www.mattfurie.com/">MATT FURIE</a> | <a href="https://www.chainsaw.fun/">CHAIN/SAW</a></h2>
+                    <p className={styles.socialTextContent}> @ 2021 PEGZ | <a href="https://www.mattfurie.com/">MATT FURIE</a> | <a href="https://www.chainsaw.fun/">CHAIN/SAW</a></p>
                     <br />
                     <br />
 

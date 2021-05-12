@@ -11,8 +11,7 @@ const Layout: React.FC = ({ children }) => {
         router.pathname.includes("login") ||
         router.pathname.includes("onboarding");
     const isPegz =
-        router.pathname.includes("asset") ||
-        router.pathname.includes("");
+        router.pathname.includes("pegz");
 
     return (
         <div className={styles.layout}>

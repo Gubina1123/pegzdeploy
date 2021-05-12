@@ -18,8 +18,7 @@ import { useUser } from "../../context/UserContext";
 import VideoPlayer from "../../components/VideoPlayer";
 import HeadWithImage from "../../components/HeadWithImage";
 import MarkdownRenderer from "../../components/MarkdownRenderer";
-
-import { Helmet } from "react-helmet";
+import ModelViewer from "../../components/Asset/ModelViewer";
 
 const BuyWidgetNoSsr = dynamic(() => import("../../components/BuyWidget"), {
     ssr: false,
@@ -54,21 +53,7 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
     
     const [showPdfModal, setShowPdfModal] = useState(false);
     const user = useUser();
-    useEffect(() => {
-        document
-          .getElementById("my-model-viewer")
-          .addEventListener("error", e =>
-            console.log(`Error: ${JSON.stringify(e)}`)
-          );
-        document
-          .getElementById("my-model-viewer")
-          .addEventListener("load", e => console.log(`Load: ${JSON.stringify(e)}`));
-        document
-          .getElementById("my-model-viewer")
-          .addEventListener("ar-status", e =>
-            console.log(`AR-Status: ${JSON.stringify(e)}`)
-          );
-    },[]);
+
     
     const { asset: assetData, fetchAsset } = useAsset(
         asset.address,
@@ -93,7 +78,6 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
     const router = useRouter();
 
     const handle = useFullScreenHandle();
-        
     return (
         <main className={styles.singleAsset}>
             <HeadWithImage
@@ -105,10 +89,10 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
             <section className={styles.nft_preview}>
                 <FullScreen handle={handle}>
                     <div className={styles.masthead}>
-                        <div
+                        {/* <div
                             className={styles.imageBg}
                             style={{ backgroundImage: `url(${asset.imageUrl})` }}
-                        />
+                        /> */}
                         <div className={styles.assetMastHead}>
                             <button
                                 className={styles.goBack}
@@ -121,53 +105,8 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
                                 <img src="/images/back-arrow.svg" alt="Back" />
                             </button>
                             <div className={styles.imageContainer}>
-                                <Helmet>
-                                    <script
-                                    type="module"
-                                    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-                                    />
-                                    <script
-                                    src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
-                                    />
-                                </Helmet>
-                                <div
-                                    className={`${styles.imageSection} ${
-                                        handle.active ? styles.active : ""
-                                    }`}
-                                >
-                                    <model-viewer
-                                        id="my-model-viewer"
-                                        style={{height:"100%"}}
-                                        className={styles.singleAssetModel}
-                                        alt="astronaut"
-                                        src="https://uploads.codesandbox.io/uploads/user/387b23b5-3d71-40dd-9acf-92b79cdf6820/MT1I-Astronaut.glb"
-                                        auto-rotate
-                                        camera-controls
-                                    />
-                                    {/* {asset?.file &&
-                                        asset?.file?.type === "video" && (
-                                            <VideoPlayer
-                                                playbackId={asset?.file?.link}
-                                            />
-                                        )}
-
-                                    {!(
-                                        asset?.file && asset?.file?.type === "video"
-                                    ) && (
-                                        <img
-                                            src={asset.imageUrl}
-                                            alt={asset.name}
-                                        />
-                                    )} */}
-                                </div>
-                                {asset?.file && asset?.file?.type === "pdf" && (
-                                    <button
-                                        className={styles.viewPdf}
-                                        onClick={() => setShowPdfModal(true)}
-                                    >
-                                        View Gallery
-                                    </button>
-                                )}
+                                <ModelViewer src="/images/scene.glb" />
+                                <button><span className={styles.singleAssetText}>01</span><input className={styles.singleAssetImage} type="image" src="/images/pegz/01creeper_icon133.png" /><span className={styles.singleAssetText}>creeper</span></button>
                             </div>
                             <button
                                 type="button"
@@ -188,27 +127,13 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
             <section className={styles.nft_detail}>
                 <div className={styles.info}>
                     <div className={styles.left}>
-                        <h2 className={styles.artist}>
+                        {/* <h2 className={styles.artist}>
                             <Link href={`/artist/${asset?.artist?.slug}`}>
                                 <a>{asset?.artist?.name}</a>
                             </Link>
-                        </h2>
-                        <h2 className={styles.name}>{asset.name}</h2>
-                        <div className={styles.description}>
-                            <h3>Description</h3>
-                            <span>
-                                <MarkdownRenderer markdown={asset.description} />
-                            </span>
-                        </div>
-
-                        {asset.extraTitle && asset.extraContent && (
-                            <div className={styles.extra}>
-                                <h2>{asset?.extraTitle}</h2>
-                                <MarkdownRenderer markdown={asset?.extraContent} />
-                            </div>
-                        )}
-
-                        <h2>
+                        </h2> */}
+                        
+                        {/* <h2>
                             {asset?.artist?.name ? (
                                 <Link href={`/artist/${asset.artist.slug}`}>
                                     <a>More Artwork From {asset.artist.name}</a>
@@ -230,10 +155,23 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
                                     </Link>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                     <div className={styles.right}>
-                        <div className={styles.details}>
+                        <div className={styles.centerItem}>
+                            <img className={styles.pegzImage} src="/images/pegz/pegz.jpg" />
+                        </div>
+                        
+                        <h2 className={styles.name}>Name: {asset.name}</h2>
+                        
+                        {asset.extraTitle && asset.extraContent && (
+                            <div className={styles.extra}>
+                                <h2>{asset?.extraTitle}</h2>
+                                <MarkdownRenderer markdown={asset?.extraContent} />
+                            </div>
+                        )}
+
+                        <div className={styles.details}>    
                             <div className={styles.auction}>
                                 {asset.onSale && (
                                     <>
@@ -301,6 +239,13 @@ const SingleAssetPage: React.FC<{ asset: NFT }> = ({ asset }) => {
                                     )}
                                 </>
                             )}
+                        
+                            <div className={styles.description}>
+                                <h3>Description</h3>
+                                <span>
+                                    <MarkdownRenderer markdown={asset.description} />
+                                </span>
+                            </div>
 
                             {modalOpen && (
                                 <OrderModal
@@ -360,4 +305,3 @@ export async function getStaticProps({ params }) {
         },
     };
 }
-

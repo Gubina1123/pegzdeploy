@@ -2,6 +2,7 @@
 
 .singleAsset {
     height: 100vh;
+    
     .masthead {
         position: relative;
     }
@@ -17,7 +18,8 @@
     .fullScreen {
         position: absolute;
         right: 60px;
-        background: rgba(0, 0, 0, 0.19);
+        background: rgb(12, 0, 0);
+        // color: rgb(7, 6, 6);
         color: #fff;
         border: none;
         height: 70px;
@@ -28,12 +30,13 @@
     }
 
     .assetMastHead {
-        padding-top: 100px;
-        padding-bottom: 116px;
+        padding-top: 50px;
+        // padding-bottom: 116px;
+        height: 100vh;
 
         -webkit-backdrop-filter: blur(50px);
         backdrop-filter: blur(50px);
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: #fff;
         color: white;
 
         div {
@@ -44,6 +47,8 @@
             background: none;
             border: none;
             margin-left: 60px;
+            background-color: black;
+            border-radius: 50%;
             cursor: pointer;
             outline: none;
         }
@@ -56,28 +61,33 @@
         color: white;
         margin-top: 12px;
     }
+
     .imageContainer {
         width: 100%;
-        height: 600px;
+        height: 50vh;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         text-align: right;
         margin-right: 76.5px;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         align-items: center;
-        
-        .userInput {
-            min-height: 100%;
+
+        .singleAssetImage {
+            height: 40px;
+            clear: both;
         }
-        .imageSection {
+        .singleAssetText {
+            font-size: 40px;
+        }
+
+        .image {
             background: #fff;
             padding: 18px;
             text-align: center;
             box-sizing: content-box;
             margin: auto;
-            height: 600px;
 
             img,
             video {
@@ -104,6 +114,7 @@
     .left {
         // margin-right: 216px;
         max-width: 508px;
+
 
         p {
             font-weight: 500;
@@ -201,6 +212,13 @@
         max-width: 100%;
         width: 625.6px;
         padding: 20px;
+        .centerItem {
+            text-align: center;
+        }
+        .pegzImage {
+            width: 50%;
+            margin-bottom: 20px;
+        }
     }
 
     .relatedGrid {
@@ -253,7 +271,7 @@
         width: 30%;
         float: left;
         height: 100vh;
-        overflow: scroll;
+        overflow-y: scroll;
 
     }
 }
@@ -269,6 +287,8 @@
         .assetMastHead {
             .goBack {
                 margin-left: 18px;
+                background-color: black;
+                border-radius: 50%;
             }
         }
     }
@@ -292,6 +312,8 @@
 
             .goBack {
                 margin-left: 18px;
+                background-color: black;
+                border-radius: 50%;
             }
         }
 
@@ -337,6 +359,22 @@
             margin: auto;
             align-items: unset;
             text-align: center;
+            height: 50vh;
+
+            .singleAssetModel {
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+            }
+
+            .singleAssetText {
+                font-size: 40px;
+            }
+
+            .singleAssetImage {
+                height: 10%;
+                clear: both;
+            }
         }
 
         .details {
@@ -351,7 +389,7 @@
         }
 
         .info {
-            background: #eeeeee;
+            background: #fff;
             position: static;
 
             flex-direction: column;
